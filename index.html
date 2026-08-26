@@ -1,279 +1,598 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Núcleo Tech - Agência de Programação</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+<title>Núcleo Tech — Engenharia de software sob medida</title>
+<meta name="description" content="A Núcleo Tech constrói o núcleo de produtos digitais: aplicações web, apps mobile e sistemas sob medida. Engenharia de software em Sobral, Ceará, para qualquer lugar.">
+<meta name="author" content="Leonardo Brito">
+<meta name="theme-color" content="#08090B">
+<meta name="color-scheme" content="dark">
+<!-- Canonical relativa: continua correta em qualquer domínio ou subdiretório.
+     As URLs absolutas abaixo (og:url, og:image, twitter:image), o robots.txt e o
+     sitemap.xml assumem https://nucleotech.com.br/ — trocar lá se o domínio for outro. -->
+<link rel="canonical" href="/">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="Núcleo Tech">
+<meta property="og:title" content="Núcleo Tech — Engenharia de software sob medida">
+<meta property="og:description" content="Construímos o núcleo de produtos digitais. Aplicações web, mobile e sistemas sob medida.">
+<meta property="og:url" content="https://nucleotech.com.br/">
+<meta property="og:image" content="https://nucleotech.com.br/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Núcleo Tech — Construímos o núcleo de produtos digitais.">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Núcleo Tech — Engenharia de software sob medida">
+<meta name="twitter:description" content="Construímos o núcleo de produtos digitais. Aplicações web, mobile e sistemas sob medida.">
+<meta name="twitter:image" content="https://nucleotech.com.br/assets/og-image.png">
+
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+
+<!-- Fontes auto-hospedadas: nenhuma requisição a terceiros, nada bloqueando a pintura. -->
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/archivo.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter.woff2" crossorigin>
+<link rel="stylesheet" href="style.css">
+
+<script>
+  /* Estados iniciais só existem quando há JS — sem JS, tudo permanece visível. */
+  document.documentElement.classList.add('js');
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Núcleo Tech",
+  "description": "Engenharia de software sob medida: aplicações web, apps mobile e sistemas personalizados.",
+  "url": "https://nucleotech.com.br/",
+  "founder": { "@type": "Person", "name": "Leonardo Brito" },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Sobral",
+    "addressRegion": "CE",
+    "addressCountry": "BR"
+  },
+  "telephone": "+55-88-99265-8966",
+  "areaServed": "BR",
+  "knowsAbout": ["Desenvolvimento Web", "Aplicativos Mobile", "Sistemas Personalizados", "APIs e Integrações", "Automação de Processos"]
+}
+</script>
 </head>
+
 <body>
-    <!-- Partículas de fundo -->
-    <div class="particles" id="particles"></div>
+<a class="skip-link" href="#main">Pular para o conteúdo</a>
 
-    <!-- Header -->
-    <header id="header">
-        <nav>
-            <div class="logo">Núcleo Tech</div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#services">Serviços</a></li>
-                <li><a href="#about">Sobre</a></li>
-                <li><a href="#contact">Contato</a></li>
-            </ul>
-            <div class="mobile-menu-toggle" id="mobile-menu-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </nav>
-    </header>
+<!-- Intro -->
+<div class="intro" id="intro" aria-hidden="true">
+  <div class="intro__inner">
+    <span class="intro__mark">N<span class="intro__dot"></span></span>
+    <span class="intro__count" id="intro-count">000</span>
+  </div>
+  <div class="intro__rail"><span class="intro__bar" id="intro-bar"></span></div>
+</div>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <h1>Núcleo Tech</h1>
-            <p>Transformamos suas ideias em soluções digitais extraordinárias</p>
-            <a href="#contact" class="cta-button">Vamos Conversar</a>
+<!-- Camadas de fundo -->
+<div class="backdrop" aria-hidden="true">
+  <div class="backdrop__grid"></div>
+  <div class="backdrop__glow"></div>
+</div>
+
+<div class="scroll-progress" aria-hidden="true"><span id="scroll-bar"></span></div>
+
+<!-- Header -->
+<header class="masthead" id="masthead">
+  <a class="brand" href="#home" aria-label="Núcleo Tech — início">
+    <span class="brand__mark" aria-hidden="true">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" focusable="false">
+        <circle cx="12" cy="12" r="10.25" stroke="currentColor" stroke-opacity=".28" stroke-width="1"/>
+        <circle cx="12" cy="12" r="5.75" stroke="currentColor" stroke-opacity=".5" stroke-width="1"/>
+        <circle cx="12" cy="12" r="2.4" fill="currentColor"/>
+      </svg>
+    </span>
+    <span class="brand__type">Núcleo<span>Tech</span></span>
+  </a>
+
+  <nav class="masthead__nav" aria-label="Navegação principal">
+    <ul>
+      <li><a href="#services" data-nav="services"><i aria-hidden="true">03</i>Capacidades</a></li>
+      <li><a href="#technologies" data-nav="technologies"><i aria-hidden="true">04</i>Stack</a></li>
+      <li><a href="#process" data-nav="process"><i aria-hidden="true">05</i>Processo</a></li>
+      <li><a href="#about" data-nav="about"><i aria-hidden="true">07</i>Núcleo</a></li>
+    </ul>
+  </nav>
+
+  <div class="masthead__end">
+    <button class="cmd-hint" type="button" data-command-open aria-label="Abrir navegação rápida (Ctrl mais K)">
+      <span class="cmd-hint__keys"><kbd id="cmd-key">Ctrl</kbd><kbd>K</kbd></span>
+      <span class="cmd-hint__label">Navegar</span>
+    </button>
+    <a class="btn btn--sm" href="#contact" data-cursor="magnetic">Iniciar projeto</a>
+    <button class="burger" id="burger" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu">
+      <span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- Menu fullscreen (mobile) -->
+<div class="menu" id="menu" hidden>
+  <nav class="menu__nav" aria-label="Navegação">
+    <a href="#services"><i aria-hidden="true">03</i><span>Capacidades</span></a>
+    <a href="#technologies"><i aria-hidden="true">04</i><span>Stack</span></a>
+    <a href="#process"><i aria-hidden="true">05</i><span>Processo</span></a>
+    <a href="#case"><i aria-hidden="true">06</i><span>Case 001</span></a>
+    <a href="#about"><i aria-hidden="true">07</i><span>Núcleo</span></a>
+    <a href="#contact"><i aria-hidden="true">08</i><span>Contato</span></a>
+  </nav>
+  <div class="menu__foot">
+    <a href="https://wa.me/5588992658966" target="_blank" rel="noopener">WhatsApp</a>
+    <span>Sobral · CE · Brasil</span>
+  </div>
+</div>
+
+<!-- Trilha de capítulos (desktop) -->
+<nav class="rail" aria-label="Capítulos">
+  <ul>
+    <li><a href="#home" data-rail="home"><span class="rail__n">01</span><span class="rail__t">Início</span></a></li>
+    <li><a href="#manifesto" data-rail="manifesto"><span class="rail__n">02</span><span class="rail__t">Manifesto</span></a></li>
+    <li><a href="#services" data-rail="services"><span class="rail__n">03</span><span class="rail__t">Capacidades</span></a></li>
+    <li><a href="#technologies" data-rail="technologies"><span class="rail__n">04</span><span class="rail__t">Stack</span></a></li>
+    <li><a href="#process" data-rail="process"><span class="rail__n">05</span><span class="rail__t">Processo</span></a></li>
+    <li><a href="#case" data-rail="case"><span class="rail__n">06</span><span class="rail__t">Case 001</span></a></li>
+    <li><a href="#about" data-rail="about"><span class="rail__n">07</span><span class="rail__t">Núcleo</span></a></li>
+    <li><a href="#contact" data-rail="contact"><span class="rail__n">08</span><span class="rail__t">Contato</span></a></li>
+  </ul>
+</nav>
+
+<main id="main">
+
+  <!-- 01 · HERO -->
+  <section class="hero" id="home">
+    <canvas class="hero__canvas" id="nucleus" aria-hidden="true"></canvas>
+
+    <div class="hero__frame" aria-hidden="true">
+      <span class="hero__tick hero__tick--tl"></span>
+      <span class="hero__tick hero__tick--tr"></span>
+      <span class="hero__tick hero__tick--bl"></span>
+      <span class="hero__tick hero__tick--br"></span>
+    </div>
+
+    <div class="hero__inner">
+      <p class="eyebrow" data-reveal>
+        <span class="eyebrow__dot" aria-hidden="true"></span>
+        Engenharia de software · Sobral · CE
+      </p>
+
+      <h1 class="hero__title">
+        <span class="line"><span data-reveal-line>Construímos</span></span>
+        <span class="line line--key"><span data-reveal-line>o núcleo</span></span>
+        <span class="line line--tail"><span data-reveal-line>de produtos digitais</span></span>
+      </h1>
+
+      <div class="hero__aside">
+        <p class="hero__lede" data-reveal>
+          Aplicações web, mobile e sistemas sob medida.
+          Do primeiro commit ao deploy em produção.
+        </p>
+        <div class="hero__actions" data-reveal>
+          <a class="btn btn--primary" href="#contact" data-cursor="magnetic">
+            <span>Iniciar projeto</span>
+            <svg viewBox="0 0 16 16" width="14" height="14" fill="none" aria-hidden="true" focusable="false"><path d="M3 13L13 3M13 3H5.5M13 3v7.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="square"/></svg>
+          </a>
+          <a class="btn btn--ghost" href="#services">Ver capacidades</a>
         </div>
-    </section>
+      </div>
+    </div>
 
-    <!-- Serviços -->
-    <section id="services">
-        <div class="container">
-            <h2 class="section-title fade-in">Nossos Serviços</h2>
-            <div class="services-grid">
-                <div class="service-card fade-in">
-                    <div class="service-icon">🚀</div>
-                    <h3>Desenvolvimento Web</h3>
-                    <p>Sites e aplicações web modernas, responsivas e de alta performance para seu negócio</p>
-                    <ul class="service-features">
-                        <li>React, Vue.js, Angular</li>
-                        <li>Node.js, PHP, Python</li>
-                        <li>Design Responsivo</li>
-                    </ul>
-                </div>
-                <div class="service-card fade-in">
-                    <div class="service-icon">📱</div>
-                    <h3>Apps Mobile</h3>
-                    <p>Aplicativos nativos e híbridos para iOS e Android com excelente UX</p>
-                    <ul class="service-features">
-                        <li>React Native, Flutter</li>
-                        <li>iOS & Android Nativo</li>
-                        <li>PWA (Progressive Web Apps)</li>
-                    </ul>
-                </div>
-                <div class="service-card fade-in">
-                    <div class="service-icon">⚡</div>
-                    <h3>Sistemas Personalizados</h3>
-                    <p>Soluções sob medida para automatizar e otimizar seus processos empresariais</p>
-                    <ul class="service-features">
-                        <li>ERP & CRM Customizados</li>
-                        <li>APIs e Integrações</li>
-                        <li>Automação de Processos</li>
-                    </ul>
-                </div>
+    <div class="hero__hud" aria-hidden="true">
+      <span class="hud__cell">03°41′S 40°20′W</span>
+      <span class="hud__cell hud__cell--mid" id="hud-status">SISTEMA ATIVO</span>
+      <span class="hud__cell hud__scroll">Role para explorar<i></i></span>
+    </div>
+  </section>
+
+  <!-- 02 · MANIFESTO -->
+  <section class="manifesto" id="manifesto">
+    <div class="shell">
+      <div class="chapter" data-reveal>
+        <span class="chapter__n">02</span>
+        <span class="chapter__rule"></span>
+        <span class="chapter__l">Manifesto</span>
+      </div>
+      <div class="manifesto__grid">
+        <p class="manifesto__text" data-split>
+          Software não é entregue quando fica bonito. É entregue quando aguenta o mundo real.
+        </p>
+        <ul class="conditions">
+          <li data-reveal><span aria-hidden="true">01</span>O pico de acesso</li>
+          <li data-reveal><span aria-hidden="true">02</span>A conexão ruim</li>
+          <li data-reveal><span aria-hidden="true">03</span>O dado errado</li>
+          <li data-reveal><span aria-hidden="true">04</span>O time que assume daqui a dois anos</li>
+        </ul>
+      </div>
+      <div class="manifesto__sign" data-reveal>
+        <span class="hairline"></span>
+        <span>Núcleo Tech</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 · CAPACIDADES -->
+  <section class="caps" id="services">
+    <div class="shell">
+      <div class="chapter" data-reveal>
+        <span class="chapter__n">03</span>
+        <span class="chapter__rule"></span>
+        <span class="chapter__l">Capacidades</span>
+      </div>
+
+      <h2 class="h-display" data-reveal>O que construímos</h2>
+
+      <div class="caps__list" id="caps">
+        <article class="cap is-open">
+          <h3>
+            <button class="cap__head" type="button" aria-expanded="true" aria-controls="cap-body-1">
+              <span class="cap__n" aria-hidden="true">01</span>
+              <span class="cap__title">Produtos Web</span>
+              <span class="cap__sign" aria-hidden="true"></span>
+            </button>
+          </h3>
+          <div class="cap__body" id="cap-body-1">
+            <div class="cap__body-in">
+              <p>Interfaces e aplicações que carregam rápido, escalam sem reescrita e não quebram no celular do cliente.</p>
+              <ul class="tags">
+                <li>React</li><li>Vue.js</li><li>Angular</li><li>Node.js</li><li>Python</li><li>PHP</li><li>Design responsivo</li>
+              </ul>
             </div>
+          </div>
+        </article>
+
+        <article class="cap">
+          <h3>
+            <button class="cap__head" type="button" aria-expanded="false" aria-controls="cap-body-2">
+              <span class="cap__n" aria-hidden="true">02</span>
+              <span class="cap__title">Aplicações Mobile</span>
+              <span class="cap__sign" aria-hidden="true"></span>
+            </button>
+          </h3>
+          <div class="cap__body" id="cap-body-2">
+            <div class="cap__body-in">
+              <p>iOS e Android — nativo ou híbrido — com a mesma exigência de acabamento que aplicamos no desktop.</p>
+              <ul class="tags">
+                <li>React Native</li><li>Flutter</li><li>iOS nativo</li><li>Android nativo</li><li>PWA</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="cap">
+          <h3>
+            <button class="cap__head" type="button" aria-expanded="false" aria-controls="cap-body-3">
+              <span class="cap__n" aria-hidden="true">03</span>
+              <span class="cap__title">Sistemas Sob Medida</span>
+              <span class="cap__sign" aria-hidden="true"></span>
+            </button>
+          </h3>
+          <div class="cap__body" id="cap-body-3">
+            <div class="cap__body-in">
+              <p>ERP, CRM, integrações e automação. O software que a sua operação precisa e não existe pronto na prateleira.</p>
+              <ul class="tags">
+                <li>ERP customizado</li><li>CRM customizado</li><li>APIs e integrações</li><li>Automação de processos</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 · STACK -->
+  <section class="system" id="technologies">
+    <div class="shell">
+      <div class="chapter" data-reveal>
+        <span class="chapter__n">04</span>
+        <span class="chapter__rule"></span>
+        <span class="chapter__l">Stack</span>
+      </div>
+
+      <div class="system__grid">
+        <div class="system__lead">
+          <h2 class="h-display h-display--sm" data-reveal>Tecnologia que dominamos</h2>
+          <p class="lede" data-reveal>Escolhemos a ferramenta pelo problema — nunca o contrário.</p>
         </div>
-    </section>
 
-    <!-- Tecnologias -->
-    <section id="technologies" class="technologies-section">
-        <div class="container">
-            <h2 class="section-title fade-in">Tecnologias que Dominamos</h2>
-            <div class="tech-grid fade-in">
-                <div class="tech-item">
-                    <div class="tech-icon">⚛️</div>
-                    <span>React</span>
-                </div>
-                <div class="tech-item">
-                    <div class="tech-icon">🟢</div>
-                    <span>Node.js</span>
-                </div>
-                <div class="tech-item">
-                    <div class="tech-icon">🐍</div>
-                    <span>Python</span>
-                </div>
-                <div class="tech-item">
-                    <div class="tech-icon">📱</div>
-                    <span>React Native</span>
-                </div>
-                <div class="tech-item">
-                    <div class="tech-icon">🎯</div>
-                    <span>TypeScript</span>
-                </div>
-                <div class="tech-item">
-                    <div class="tech-icon">🗃️</div>
-                    <span>MongoDB</span>
-                </div>
-            </div>
+        <div class="panel" id="panel" data-reveal>
+          <div class="panel__bar" aria-hidden="true">
+            <span class="panel__dots"><i></i><i></i><i></i></span>
+            <span class="panel__name">nucleo · system status</span>
+          </div>
+          <ul class="panel__rows">
+            <li class="prow" data-delay="0">
+              <span class="prow__k">Interface</span>
+              <span class="prow__v">React · Vue · Angular · TypeScript</span>
+              <span class="prow__s">ATIVO</span>
+            </li>
+            <li class="prow" data-delay="1">
+              <span class="prow__k">Serviços</span>
+              <span class="prow__v">Node.js · Python · PHP</span>
+              <span class="prow__s">ATIVO</span>
+            </li>
+            <li class="prow" data-delay="2">
+              <span class="prow__k">Mobile</span>
+              <span class="prow__v">React Native · Flutter · PWA</span>
+              <span class="prow__s">ATIVO</span>
+            </li>
+            <li class="prow" data-delay="3">
+              <span class="prow__k">Dados</span>
+              <span class="prow__v">MongoDB · APIs REST</span>
+              <span class="prow__s">ATIVO</span>
+            </li>
+            <li class="prow" data-delay="4">
+              <span class="prow__k">Integração</span>
+              <span class="prow__v">Automação de processos</span>
+              <span class="prow__s">ATIVO</span>
+            </li>
+          </ul>
+          <div class="panel__foot">
+            <span id="panel-clock" class="panel__clock">--:--:--</span>
+            <span class="panel__net" id="panel-net"></span>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- Sobre -->
-    <section id="about">
-        <div class="container">
-            <h2 class="section-title fade-in">Sobre a Núcleo Tech</h2>
-            <div class="about-content">
-                <div class="about-text fade-in">
-                    <h3>Nossa História</h3>
-                    <p>Fundada por Leonardo Brito, a Núcleo Tech nasceu da paixão por tecnologia e do desejo de transformar ideias em realidade digital.</p>
-                    <p>Nossa missão é entregar soluções tecnológicas inovadoras que impulsionem o crescimento dos nossos clientes, sempre com foco na qualidade, performance e experiência do usuário.</p>
-                    <p>Acreditamos que a tecnologia deve simplificar processos e gerar resultados reais para seu negócio.</p>
-                </div>
-                <div class="about-stats fade-in">
-                    <div class="stat-item">
-                        <span class="stat-number" data-target="50">0</span>
-                        <p>Projetos Entregues</p>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number" data-target="100">0</span>
-                        <p>% Clientes Satisfeitos</p>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number" data-target="24">0</span>
-                        <p>Horas de Suporte</p>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number" data-target="3">0</span>
-                        <p>Anos de Experiência</p>
-                    </div>
-                </div>
-            </div>
+  <!-- 05 · PROCESSO -->
+  <section class="process" id="process">
+    <div class="shell">
+      <div class="chapter" data-reveal>
+        <span class="chapter__n">05</span>
+        <span class="chapter__rule"></span>
+        <span class="chapter__l">Processo</span>
+      </div>
+
+      <h2 class="h-display" data-reveal>Como trabalhamos</h2>
+
+      <ol class="steps">
+        <li class="step" data-reveal>
+          <span class="step__n">01</span>
+          <h3>Descoberta</h3>
+          <p>Entender o problema antes de escrever a primeira linha. Escopo, restrições e o que realmente importa.</p>
+        </li>
+        <li class="step" data-reveal>
+          <span class="step__n">02</span>
+          <h3>Arquitetura</h3>
+          <p>Definir a estrutura. O que é simples hoje precisa continuar simples daqui a dois anos.</p>
+        </li>
+        <li class="step" data-reveal>
+          <span class="step__n">03</span>
+          <h3>Construção</h3>
+          <p>Ciclos curtos e entregas visíveis. Você acompanha o produto nascendo, não um relatório de status.</p>
+        </li>
+        <li class="step" data-reveal>
+          <span class="step__n">04</span>
+          <h3>Operação</h3>
+          <p>Deploy, monitoramento e evolução. Software não termina — ele entra em produção.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 06 · CASE 001 -->
+  <section class="case" id="case">
+    <div class="shell">
+      <div class="chapter" data-reveal>
+        <span class="chapter__n">06</span>
+        <span class="chapter__rule"></span>
+        <span class="chapter__l">Case 001</span>
+      </div>
+
+      <div class="case__head">
+        <h2 class="h-display" data-reveal>Este site <br>é o case</h2>
+        <p class="lede" data-reveal>
+          Você já está dentro dele. Nenhum framework, nenhuma biblioteca de animação,
+          nenhum build. Os números abaixo são medidos agora, no seu navegador.
+        </p>
+      </div>
+
+      <dl class="metrics" id="metrics">
+        <div class="metric">
+          <dt>Dependências</dt>
+          <dd><span data-metric="deps">0</span></dd>
+          <p>Nenhum pacote de terceiros em produção.</p>
         </div>
-    </section>
-
-    <!-- Depoimentos -->
-    <section id="testimonials" class="testimonials-section">
-        <div class="container">
-            <h2 class="section-title fade-in">O que Nossos Clientes Dizem</h2>
-            <div class="testimonials-grid">
-                <div class="testimonial-card fade-in">
-                    <div class="testimonial-content">
-                        <p>"A Núcleo Tech transformou nossa presença digital. O resultado superou todas as expectativas!"</p>
-                    </div>
-                    <div class="testimonial-author">
-                        <strong>Maria Silva</strong>
-                        <span>CEO, TechStart</span>
-                    </div>
-                </div>
-                <div class="testimonial-card fade-in">
-                    <div class="testimonial-content">
-                        <p>"Profissionalismo e qualidade técnica excepcionais. Recomendo para qualquer projeto."</p>
-                    </div>
-                    <div class="testimonial-author">
-                        <strong>João Santos</strong>
-                        <span>Diretor, InovaCorp</span>
-                    </div>
-                </div>
-            </div>
+        <div class="metric">
+          <dt>JavaScript</dt>
+          <dd><span data-metric="js">—</span><i>KB</i></dd>
+          <p>Total transferido nesta sessão.</p>
         </div>
-    </section>
-
-    <!-- Contato -->
-    <section id="contact">
-        <div class="container">
-            <h2 class="section-title fade-in">Vamos Conversar</h2>
-            <div class="contact-grid">
-                <div class="contact-info fade-in">
-                    <h3>Entre em Contato</h3>
-                    <p>Pronto para transformar sua ideia em realidade? Entre em contato conosco!</p>
-                    
-                    <div class="contact-item">
-                        <span class="contact-icon">📧</span>
-                        <div>
-                            <strong>Email</strong><br>
-                            <a href="mailto:nucleotech.suporte@gmail.com.br">nucleotech.suporte@gmail.com.br</a>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <span class="contact-icon">📱</span>
-                        <div>
-                            <strong>WhatsApp</strong><br>
-                            <a href="https://wa.me/5588992658966" target="_blank">+55 (88) 9 9265-8966</a>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <span class="contact-icon">📍</span>
-                        <div>
-                            <strong>Localização</strong><br>
-                            Sobral, Ceará - Brasil
-                        </div>
-                    </div>
-
-                    <div class="social-links">
-                        <h4>Nos siga nas redes sociais</h4>
-                        <div class="social-icons">
-                            <a href="#" class="social-link">🌐 LinkedIn</a>
-                            <a href="#" class="social-link">📷 Instagram</a>
-                            <a href="#" class="social-link">🐙 GitHub</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <form class="contact-form fade-in" id="contact-form">
-                    <h3>Envie sua Mensagem</h3>
-                    <div class="form-group">
-                        <input type="text" id="name" name="name" placeholder="Seu Nome" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" id="email" name="email" placeholder="Seu Email" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="tel" id="phone" name="phone" placeholder="Seu Telefone (opcional)">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" id="subject" name="subject" placeholder="Assunto" required>
-                    </div>
-                    <div class="form-group">
-                        <textarea id="message" name="message" rows="5" placeholder="Conte-nos sobre seu projeto..." required></textarea>
-                    </div>
-                    <button type="submit" class="submit-btn" id="submit-btn">
-                        <span>Enviar Mensagem</span>
-                        <div class="btn-loading" style="display: none;">Enviando...</div>
-                    </button>
-                </form>
-            </div>
+        <div class="metric">
+          <dt>CSS</dt>
+          <dd><span data-metric="css">—</span><i>KB</i></dd>
+          <p>Todas as folhas de estilo da página.</p>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <div class="logo">Núcleo Tech</div>
-                    <p>Transformando ideias em soluções digitais extraordinárias.</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Serviços</h4>
-                    <ul>
-                        <li><a href="#services">Desenvolvimento Web</a></li>
-                        <li><a href="#services">Apps Mobile</a></li>
-                        <li><a href="#services">Sistemas Personalizados</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Contato</h4>
-                    <ul>
-                        <li>leonardo@nucleotech.com.br</li>
-                        <li>+55 (85) 9 9999-9999</li>
-                        <li>Fortaleza, CE - Brasil</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Núcleo Tech. Todos os direitos reservados.</p>
-                <p>Desenvolvido com 💙 por Leonardo Brito</p>
-            </div>
+        <div class="metric">
+          <dt>Primeira pintura</dt>
+          <dd><span data-metric="paint">—</span><i>ms</i></dd>
+          <p>Do request ao primeiro pixel.</p>
         </div>
-    </footer>
+        <div class="metric">
+          <dt>Nós no DOM</dt>
+          <dd><span data-metric="dom">—</span></dd>
+          <p>Estrutura enxuta, sem lixo.</p>
+        </div>
+        <div class="metric">
+          <dt>Quadros</dt>
+          <dd><span data-metric="fps">—</span><i>fps</i></dd>
+          <p>Medido em tempo real.</p>
+        </div>
+      </dl>
 
-    <!-- Scripts -->
-    <script src="script.js"></script>
+      <p class="case__note" data-reveal>
+        <span class="hairline"></span>
+        Portfólio de clientes em curadoria. Os projetos entrarão aqui, no mesmo padrão.
+      </p>
+    </div>
+  </section>
+
+  <!-- 07 · NÚCLEO -->
+  <section class="about" id="about">
+    <div class="shell">
+      <div class="chapter" data-reveal>
+        <span class="chapter__n">07</span>
+        <span class="chapter__rule"></span>
+        <span class="chapter__l">Núcleo</span>
+      </div>
+
+      <div class="about__grid">
+        <div class="about__lead">
+          <h2 class="h-display h-display--sm" data-reveal>Quem está <br>por trás</h2>
+          <p data-reveal>
+            A Núcleo Tech foi fundada por <strong>Leonardo Brito</strong> em Sobral, no Ceará.
+            Trabalhamos daqui para qualquer lugar.
+          </p>
+          <p data-reveal>
+            Não somos uma fábrica de sites. Somos um núcleo técnico que assume a parte
+            difícil de um produto digital e responde por ela.
+          </p>
+        </div>
+
+        <ul class="beliefs">
+          <li data-reveal><span aria-hidden="true">01</span>Software é infraestrutura, não decoração.</li>
+          <li data-reveal><span aria-hidden="true">02</span>Performance é decisão de projeto, não ajuste final.</li>
+          <li data-reveal><span aria-hidden="true">03</span>Se precisa de manual, foi mal desenhado.</li>
+          <li data-reveal><span aria-hidden="true">04</span>Entregar é obrigação. Manter de pé é o trabalho.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 08 · CONTATO -->
+  <section class="cta" id="contact">
+    <div class="shell">
+      <div class="chapter" data-reveal>
+        <span class="chapter__n">08</span>
+        <span class="chapter__rule"></span>
+        <span class="chapter__l">Contato</span>
+      </div>
+
+      <h2 class="cta__title">
+        <span class="line"><span data-reveal-line>Tem uma ideia?</span></span>
+        <span class="line line--key"><span data-reveal-line>Vamos</span></span>
+        <span class="line line--key"><span data-reveal-line>construir.</span></span>
+      </h2>
+
+      <div class="cta__grid">
+        <form class="brief" id="brief" novalidate>
+          <div class="field">
+            <label for="f-name">Nome</label>
+            <input id="f-name" name="name" type="text" autocomplete="name" required>
+            <span class="field__err" data-err-for="f-name" role="alert"></span>
+          </div>
+
+          <div class="field">
+            <label for="f-email">E-mail</label>
+            <input id="f-email" name="email" type="email" autocomplete="email" inputmode="email" required>
+            <span class="field__err" data-err-for="f-email" role="alert"></span>
+          </div>
+
+          <div class="field">
+            <label for="f-kind">Tipo de projeto</label>
+            <select id="f-kind" name="kind">
+              <option>Produto web</option>
+              <option>Aplicação mobile</option>
+              <option>Sistema sob medida</option>
+              <option>Ainda não sei</option>
+            </select>
+          </div>
+
+          <div class="field field--full">
+            <label for="f-msg">O que você quer construir</label>
+            <textarea id="f-msg" name="message" rows="4" required></textarea>
+            <span class="field__err" data-err-for="f-msg" role="alert"></span>
+          </div>
+
+          <div class="brief__actions">
+            <button class="btn btn--primary" type="submit" data-cursor="magnetic">
+              <span>Enviar pelo WhatsApp</span>
+              <svg viewBox="0 0 16 16" width="14" height="14" fill="none" aria-hidden="true" focusable="false"><path d="M3 13L13 3M13 3H5.5M13 3v7.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="square"/></svg>
+            </button>
+            <button class="btn btn--ghost" type="button" id="brief-mail">Enviar por e-mail</button>
+          </div>
+          <p class="brief__note" id="brief-note" role="status"></p>
+        </form>
+
+        <div class="direct">
+          <p class="direct__label">Direto</p>
+          <a class="direct__link" href="https://wa.me/5588992658966" target="_blank" rel="noopener">
+            <span>WhatsApp</span>
+            <em>+55 88 99265-8966</em>
+          </a>
+          <a class="direct__link" href="mailto:nucleotech.suporte@gmail.com.br">
+            <span>E-mail</span>
+            <em>nucleotech.suporte@gmail.com.br</em>
+          </a>
+          <p class="direct__where">
+            Sobral · Ceará · Brasil<br>
+            <span>Atendemos remotamente em todo o país.</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="shell">
+    <div class="foot__top">
+      <a class="brand brand--foot" href="#home">
+        <span class="brand__mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" focusable="false">
+            <circle cx="12" cy="12" r="10.25" stroke="currentColor" stroke-opacity=".28" stroke-width="1"/>
+            <circle cx="12" cy="12" r="5.75" stroke="currentColor" stroke-opacity=".5" stroke-width="1"/>
+            <circle cx="12" cy="12" r="2.4" fill="currentColor"/>
+          </svg>
+        </span>
+        <span class="brand__type">Núcleo<span>Tech</span></span>
+      </a>
+      <nav class="foot__nav" aria-label="Rodapé">
+        <a href="#services">Capacidades</a>
+        <a href="#technologies">Stack</a>
+        <a href="#process">Processo</a>
+        <a href="#about">Núcleo</a>
+        <a href="#contact">Contato</a>
+      </nav>
+    </div>
+    <div class="foot__bottom">
+      <p>&copy; <span id="year">2025</span> Núcleo Tech · Sobral, CE</p>
+      <p>Construído sem frameworks por Leonardo Brito</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Navegação rápida -->
+<div class="cmd" id="command" hidden>
+  <div class="cmd__scrim" data-command-close></div>
+  <div class="cmd__box" role="dialog" aria-modal="true" aria-label="Navegação rápida">
+    <div class="cmd__field">
+      <span class="cmd__prompt" aria-hidden="true">&gt;</span>
+      <input id="cmd-input" type="text" placeholder="Ir para…" autocomplete="off" spellcheck="false" aria-label="Buscar seção ou ação">
+      <kbd>Esc</kbd>
+    </div>
+    <ul class="cmd__list" id="cmd-list" role="listbox" aria-label="Resultados"></ul>
+    <div class="cmd__foot">
+      <span><kbd>↑</kbd><kbd>↓</kbd> navegar</span>
+      <span><kbd>↵</kbd> abrir</span>
+      <span>Núcleo Command</span>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="js/main.js"></script>
 </body>
 </html>
