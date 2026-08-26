@@ -9,9 +9,12 @@
 <meta name="author" content="Leonardo Brito">
 <meta name="theme-color" content="#08090B">
 <meta name="color-scheme" content="dark">
-<!-- Canonical relativa: continua correta em qualquer domínio ou subdiretório.
-     As URLs absolutas abaixo (og:url, og:image, twitter:image), o robots.txt e o
-     sitemap.xml assumem https://nucleotech.com.br/ — trocar lá se o domínio for outro. -->
+<!-- SEM DOMÍNIO PRÓPRIO AINDA.
+     Tudo aqui é relativo à raiz, então continua correto em qualquer host — o
+     domínio da Vercel inclusive — sem nenhum endereço presumido.
+     Quando houver domínio definitivo, ver "Depois do domínio" no README:
+     og:url e as duas imagens devem virar absolutas, e o sitemap.xml passa a
+     fazer sentido. Antes disso, um endereço absoluto seria inventado. -->
 <link rel="canonical" href="/">
 
 <meta property="og:type" content="website">
@@ -19,8 +22,7 @@
 <meta property="og:site_name" content="Núcleo Tech">
 <meta property="og:title" content="Núcleo Tech — Engenharia de software sob medida">
 <meta property="og:description" content="Construímos o núcleo de produtos digitais. Aplicações web, mobile e sistemas sob medida.">
-<meta property="og:url" content="https://nucleotech.com.br/">
-<meta property="og:image" content="https://nucleotech.com.br/assets/og-image.png">
+<meta property="og:image" content="/assets/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Núcleo Tech — Construímos o núcleo de produtos digitais.">
@@ -28,7 +30,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Núcleo Tech — Engenharia de software sob medida">
 <meta name="twitter:description" content="Construímos o núcleo de produtos digitais. Aplicações web, mobile e sistemas sob medida.">
-<meta name="twitter:image" content="https://nucleotech.com.br/assets/og-image.png">
+<meta name="twitter:image" content="/assets/og-image.png">
 
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
@@ -49,7 +51,6 @@
   "@type": "ProfessionalService",
   "name": "Núcleo Tech",
   "description": "Engenharia de software sob medida: aplicações web, apps mobile e sistemas personalizados.",
-  "url": "https://nucleotech.com.br/",
   "founder": { "@type": "Person", "name": "Leonardo Brito" },
   "address": {
     "@type": "PostalAddress",
@@ -532,9 +533,9 @@
             <span>WhatsApp</span>
             <em>+55 88 99265-8966</em>
           </a>
-          <a class="direct__link" href="mailto:nucleotech.suporte@gmail.com.br">
+          <a class="direct__link" href="mailto:agencianucleotech@gmail.com">
             <span>E-mail</span>
-            <em>nucleotech.suporte@gmail.com.br</em>
+            <em>agencianucleotech@gmail.com</em>
           </a>
           <p class="direct__where">
             Sobral · Ceará · Brasil<br>

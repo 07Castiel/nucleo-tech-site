@@ -8,9 +8,9 @@
 
 import { qs, qsa, on } from '../core/dom.js';
 
-const ENDPOINT = ''; // ex.: 'https://api.nucleotech.com.br/contato'
+const ENDPOINT = ''; // URL do backend, quando existir. Vazio = usa WhatsApp/e-mail.
 const WHATSAPP_NUMBER = '5588992658966';
-const EMAIL = 'nucleotech.suporte@gmail.com.br';
+const EMAIL = 'agencianucleotech@gmail.com';
 
 const RULES = {
   'f-name': (value) => (value.trim().length >= 2 ? '' : 'Informe seu nome.'),
@@ -72,10 +72,25 @@ export function initContact() {
     ].join('\n');
   };
 
+  /*
+   * Abre por meio de um link temporário, e não com window.open.
+   * Com a flag 'noopener', window.open devolve null MESMO quando abre a aba —
+   * é o que a especificação manda, já que o opener não pode manter referência.
+   * Testar esse retorno fazia o fallback disparar sempre e levar a aba atual
+   * embora junto. Um clique em <a> não tem essa ambiguidade e continua dentro
+   * do gesto do usuário, então nenhum bloqueador de pop-up interfere.
+   */
   const openChannel = (url) => {
-    const opened = window.open(url, '_blank', 'noopener');
-    // Se o bloqueador de pop-ups interferir, segue na mesma aba.
-    if (!opened) window.location.href = url;
+    const link = document.createElement('a');
+    link.href = url;
+    if (url.startsWith('http')) {
+      link.target = '_blank';
+      link.rel = 'noopener';
+    }
+    link.hidden = true;
+    document.body.append(link);
+    link.click();
+    link.remove();
   };
 
   on(form, 'submit', (event) => {

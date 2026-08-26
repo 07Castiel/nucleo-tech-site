@@ -8,7 +8,7 @@
 import { qs, qsa, on, trapFocus, lockScroll, reducedMotion } from '../core/dom.js';
 
 const WHATSAPP = 'https://wa.me/5588992658966';
-const EMAIL = 'nucleotech.suporte@gmail.com.br';
+const EMAIL = 'agencianucleotech@gmail.com';
 
 const COMMANDS = [
   { id: 'home',         label: 'Início',              hint: 'Seção', badge: '01', type: 'link', target: '#home' },

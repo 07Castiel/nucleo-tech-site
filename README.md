@@ -26,7 +26,6 @@ Não há build, nem instalação, nem `package.json`.
 index.html            Documento único, 8 capítulos, todo o conteúdo em HTML
 style.css             Sistema visual completo, organizado em @layer
 robots.txt
-sitemap.xml
 assets/
   favicon.svg
   apple-touch-icon.png
@@ -126,18 +125,36 @@ resposta no ponto de extensão já marcado; o resto do fluxo continua igual.
 
 ---
 
-## Antes de publicar
+## Publicação na Vercel
 
-1. **Domínio.** `og:url`, `og:image`, `twitter:image`, `robots.txt` e
-   `sitemap.xml` assumem `https://nucleotech.com.br/`. Se o domínio for outro,
-   troque nesses quatro lugares. A `<link rel="canonical">` é relativa e continua
-   correta em qualquer domínio.
-2. **E-mail.** O endereço `nucleotech.suporte@gmail.com.br` veio do site
-   anterior e provavelmente tem um erro de digitação (`gmail.com.br` não existe
-   como domínio do Gmail). Ele foi preservado exatamente como estava — confirme
-   e corrija em `index.html`, `js/modules/contact.js` e `js/modules/command.js`.
-3. **Compressão.** Ative gzip/brotli no servidor. O CSS e o JS caem para menos de
-   um terço do tamanho.
+Site estático puro: **não há build**, nem `package.json`, nem dependências para
+instalar. A Vercel detecta `index.html` na raiz e serve os arquivos como estão.
+
+- Framework Preset: **Other**
+- Build Command: *(vazio)*
+- Output Directory: *(vazio — a raiz do repositório)*
+- Install Command: *(vazio)*
+
+Compressão gzip/brotli é automática na Vercel; o CSS e o JS caem para menos de um
+terço do tamanho transferido.
+
+### Depois do domínio
+
+O projeto **não assume nenhum domínio**. Tudo é relativo à raiz, então funciona
+igual no domínio da Vercel ou em um domínio próprio. Quando houver um domínio
+definitivo, três coisas passam a ser possíveis (nenhuma delas é obrigatória para
+o site funcionar):
+
+1. **`og:url`** — acrescentar em `index.html`, com a URL absoluta da home.
+2. **`og:image` e `twitter:image`** — hoje são `/assets/og-image.png`. A
+   especificação do Open Graph pede URL absoluta; trocar para o endereço completo
+   melhora a prévia em alguns validadores.
+3. **`sitemap.xml`** — não existe no repositório porque `<loc>` exige URL
+   absoluta e seria um endereço inventado. Criar na raiz e apontar a diretiva
+   `Sitemap:` do `robots.txt` para ele.
+
+O `<link rel="canonical" href="/">` é relativo e continua correto em qualquer
+cenário — não precisa mudar.
 
 ---
 
