@@ -35,9 +35,11 @@
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 
-<!-- Fontes auto-hospedadas: nenhuma requisição a terceiros, nada bloqueando a pintura. -->
-<link rel="preload" as="font" type="font/woff2" href="assets/fonts/archivo.woff2" crossorigin>
-<link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter.woff2" crossorigin>
+<!-- Fontes auto-hospedadas: nenhuma requisição a terceiros, nada bloqueando a pintura.
+     Sem <link rel="preload">: as fontes são de mesma origem e o style.css, que as
+     declara, já é a segunda requisição do documento — o ganho seria de poucos
+     milissegundos e fica escondido atrás da abertura, que espera document.fonts.ready.
+     Em troca, o preload rendia um aviso de "preloaded but not used" no console. -->
 <link rel="stylesheet" href="style.css">
 
 <script>

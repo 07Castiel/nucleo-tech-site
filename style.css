@@ -9,10 +9,12 @@
    Auto-hospedadas (subset latin, woff2). Sem terceiros no caminho crítico:
    uma origem, zero DNS extra, nada bloqueando a primeira pintura.
    ---------------------------- */
+/* Fontes variáveis: os eixos vêm das faixas em font-weight/font-stretch.
+   Uma só fonte por src — o antigo format('woff2-variations') é sintaxe legada e
+   obrigava o navegador a avaliar duas entradas apontando para o mesmo arquivo. */
 @font-face {
   font-family: 'Archivo';
-  src: url('assets/fonts/archivo.woff2') format('woff2-variations'),
-       url('assets/fonts/archivo.woff2') format('woff2');
+  src: url('assets/fonts/archivo.woff2') format('woff2');
   font-weight: 400 900;
   font-stretch: 62% 125%;
   font-style: normal;
@@ -20,8 +22,7 @@
 }
 @font-face {
   font-family: 'Inter';
-  src: url('assets/fonts/inter.woff2') format('woff2-variations'),
-       url('assets/fonts/inter.woff2') format('woff2');
+  src: url('assets/fonts/inter.woff2') format('woff2');
   font-weight: 400 600;
   font-style: normal;
   font-display: swap;
