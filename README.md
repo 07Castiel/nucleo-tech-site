@@ -1,6 +1,6 @@
 # Núcleo Tech
 
-Site da Núcleo Tech — sites, sistemas sob medida, atendimento automático no
+Site da Núcleo Tech: sites, sistemas sob medida, atendimento automático no
 WhatsApp e inteligência artificial para empresas. Sobral, CE.
 
 **O site tem um objetivo só: fazer o visitante clicar no WhatsApp.**
@@ -59,7 +59,7 @@ Tudo está em `index.html`, em português, sem nenhum sistema de template.
 | Textos de qualquer seção | direto no `index.html` |
 | Acrescentar um case | copie o bloco `<article class="case">` inteiro e troque os textos (há um comentário marcando o ponto) |
 | Perguntas frequentes | cada `<details class="q">` é uma pergunta |
-| WhatsApp, e-mail, Instagram | procure por `5588993020040` — o número aparece nos botões, no rodapé e nos dados estruturados |
+| WhatsApp, e-mail, Instagram | procure por `5588993020040`. O número aparece nos botões, no rodapé e nos dados estruturados |
 
 ### Um número de WhatsApp só
 
@@ -111,7 +111,7 @@ sombra. Onde não couberem 140px, use só o símbolo (`brand/simbolo-escuro.svg`
 **Fontes servidas pelo próprio site.** Nenhuma requisição ao Google Fonts nem a
 qualquer outro domínio: menos conexões, nada bloqueando a primeira pintura e o
 texto aparecendo antes no 4G fraco. Se um dia alguém trocar por um `<link>` do
-Google, o site fica mais lento — foi medido.
+Google, o site fica mais lento. Foi medido.
 
 ---
 
@@ -151,7 +151,7 @@ Site estático puro: **não há build**.
 - Build Command, Output Directory, Install Command: todos **vazios**
 
 O endereço é `https://agencianucleotech.vercel.app`. Ele aparece escrito no
-`index.html` em `canonical`, `og:url` e `og:image` — o Open Graph exige
+`index.html` em `canonical`, `og:url` e `og:image`. O Open Graph exige
 endereço completo, senão a prévia do link no WhatsApp não carrega a imagem.
 Se o domínio mudar, troque nesses três lugares.
 
