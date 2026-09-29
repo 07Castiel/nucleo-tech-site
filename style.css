@@ -432,6 +432,17 @@ a { color: inherit; }
 
 .case__topo { margin-bottom: 22px; }
 
+/* Captura do trabalho entregue. width e height estão escritos no HTML,
+   então o navegador reserva o espaço antes de baixar e nada pula na tela. */
+.case__foto {
+  width: 100%;
+  height: auto;
+  margin-bottom: 26px;
+  border: 1px solid var(--nt-line);
+  border-radius: 10px;
+  background: var(--nt-ink);
+}
+
 .case__topo h3 {
   font-family: var(--nt-font-sans);
   font-weight: 700;
