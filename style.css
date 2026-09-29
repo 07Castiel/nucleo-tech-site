@@ -339,30 +339,16 @@ a { color: inherit; }
   color: var(--nt-teal);
 }
 
-.cartao__prob {
-  color: var(--nt-gray-300);
-  font-size: 1rem;
-  padding-left: 14px;
-  border-left: 2px solid var(--nt-line);
-}
-
 .cartao__ex {
   margin-top: auto;
   font-size: 1rem;
   color: var(--nt-gray-300);
-  border-top: 1px solid var(--nt-line);
-  padding-top: 16px;
 }
 
-.cartao__ex span {
-  display: block;
-  font-family: var(--nt-font-mono);
-  font-weight: 600;
-  font-size: 0.75rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--nt-gray-500);
-  margin-bottom: 6px;
+.cartao__ex a {
+  color: var(--nt-teal);
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 /* ---------- PARA QUEM É ---------- */
@@ -477,6 +463,26 @@ a { color: inherit; }
   margin-bottom: 20px;
 }
 .case__lista dd:last-child { margin-bottom: 0; }
+
+.case__lista dd p + p { margin-top: 12px; }
+
+.entregas { display: grid; gap: 10px; }
+
+.entregas li {
+  display: flex;
+  gap: 10px;
+  align-items: baseline;
+}
+
+.entregas li::before {
+  content: "";
+  flex: none;
+  width: 7px;
+  height: 7px;
+  border-radius: 2px;
+  background: var(--nt-teal);
+  transform: rotate(45deg);
+}
 
 .case__link { margin-top: 24px; }
 
