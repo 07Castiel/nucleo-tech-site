@@ -1,7 +1,7 @@
 {
   "name": "Núcleo Tech",
   "short_name": "Núcleo Tech",
-  "description": "Sites, sistemas e automação de WhatsApp para empresas de Sobral e região",
+  "description": "Sites, sistemas e atendimento automático no WhatsApp para empresas de Sobral e região",
   "lang": "pt-BR",
   "start_url": "/",
   "display": "standalone",
