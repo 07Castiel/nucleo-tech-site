@@ -549,20 +549,6 @@ a { color: inherit; }
   padding: 28px 22px;
 }
 
-.quem__marca {
-  flex: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 120px;
-  height: 120px;
-  border-radius: var(--raio);
-  border: 1px solid var(--nt-line);
-  background: var(--nt-ink);
-}
-.quem__marca img { width: 80px; height: 80px; }
-
-/* usada quando a foto do Leonardo entrar no lugar do símbolo */
 .quem__foto {
   flex: none;
   width: 120px;
@@ -577,8 +563,7 @@ a { color: inherit; }
 
 @media (min-width: 720px) {
   .quem { flex-direction: row; align-items: flex-start; gap: 32px; padding: 34px 30px; }
-  .quem__marca, .quem__foto { width: 150px; height: 150px; }
-  .quem__marca img { width: 96px; height: 96px; }
+  .quem__foto { width: 150px; height: 150px; }
 }
 
 /* ---------- PERGUNTAS FREQUENTES ---------- */
