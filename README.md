@@ -1,160 +1,169 @@
 # Núcleo Tech
 
-Site institucional da Núcleo Tech — engenharia de software sob medida, Sobral/CE.
+Site da Núcleo Tech — sites, sistemas sob medida, atendimento automático no
+WhatsApp e inteligência artificial para empresas. Sobral, CE.
 
-**Zero dependências de terceiros em produção.** Sem framework, sem bundler, sem
-biblioteca de animação. Abrir `index.html` em um servidor estático é o deploy.
+**O site tem um objetivo só: fazer o visitante clicar no WhatsApp.**
+Toda seção leva a isso. Se uma mudança não ajuda nesse objetivo, ela não entra.
+
+HTML, CSS e JavaScript puros. Sem framework, sem `package.json`, sem etapa de
+montagem. Abrir os arquivos num servidor estático é a publicação inteira.
 
 ---
 
-## Rodar localmente
-
-O projeto usa ES modules, que exigem HTTP (não funcionam em `file://`):
+## Rodar na sua máquina
 
 ```bash
 python3 -m http.server 8080
 # http://localhost:8080
 ```
 
-Não há build, nem instalação, nem `package.json`.
+Não há instalação nem dependências.
 
 ---
 
-## Estrutura
+## Arquivos
 
 ```
-index.html            Documento único, 8 capítulos, todo o conteúdo em HTML
-style.css             Sistema visual completo, organizado em @layer
+index.html                      A página inteira. Todo o texto está aqui.
+style.css                       Todo o visual.
 robots.txt
-assets/
-  favicon.svg
-  apple-touch-icon.png
-  og-image.png        1200×630, para compartilhamento
-  fonts/              Archivo · Inter · IBM Plex Mono (subset latin, woff2)
-js/
-  main.js             Orquestra os módulos e nada mais
-  core/
-    dom.js            Seletores, matemática, foco preso, trava de rolagem
-    ticker.js         O único requestAnimationFrame do site
-    reveal.js         Revelações por scroll e acendimento palavra a palavra
-  modules/
-    intro.js          Abertura (teto rígido de 1500 ms)
-    nucleus.js        Instrumento do hero, Canvas 2D
-    cursor.js         Cursor customizado e botões magnéticos
-    nav.js            Cabeçalho, capítulo ativo, menu, âncoras
-    command.js        Navegação rápida em Ctrl/⌘ + K
-    caps.js           Índice de capacidades
-    system.js         Painel de stack (relógio e viewport reais)
-    metrics.js        Métricas medidas do próprio site
-    contact.js        Briefing → WhatsApp ou e-mail
+
+favicon.ico  favicon.svg        Ícones da aba e do celular (kit da marca).
+apple-touch-icon.png
+icon-192.png  icon-512.png
+icon-maskable-512.png
+site.webmanifest
+og-image.png                    Imagem da prévia quando o link é compartilhado.
+
+brand/                          A logo em SVG, nas versões do kit da marca.
+assets/fonts/
+  archivo.woff2                 Títulos e texto. Fonte variável, com o eixo de
+                                largura (wdth) que o .nt-display usa em 112%.
+  jetbrains-mono-600.woff2      Rótulos em caixa alta (.nt-label).
 ```
 
-### Decisões que sustentam a arquitetura
-
-**Um só `requestAnimationFrame`.** Todo módulo que anima registra uma tarefa em
-`core/ticker.js`. O loop para sozinho quando ninguém precisa dele e pausa inteiro
-quando a aba perde o foco. Nenhum módulo abre o próprio loop.
-
-**Cada módulo falha isolado.** `main.js` envolve cada inicialização em `safely()`.
-Um erro no cursor não derruba o formulário.
-
-**O conteúdo não depende de JavaScript.** Os estados iniciais das animações só
-existem sob a classe `.js`, aplicada por um script inline no `<head>`. Com JS
-desligado, o site continua legível e navegável por inteiro.
-
-**Fontes auto-hospedadas.** Nenhuma requisição a terceiros, nenhum DNS extra e
-nada bloqueando a primeira pintura. Só o subset `latin` (164 KB no total),
-suficiente para português.
-
-**Tipografia que não quebra.** Os títulos que precisam ocupar uma linha só são
-dimensionados a partir da largura útil real (`--fit-w`), não de `vw` chutado.
-A maior linha do hero mede 7,9em, então `font-size: --fit-w / 8.15` cabe em
-qualquer tela entre 320px e 2560px. O mesmo vale para os títulos de seção, onde a
-restrição é a palavra mais longa (`TRABALHAMOS`, 8,52em).
+> **Atenção ao publicar na Vercel:** os ícones e a pasta `brand/` ficam na raiz
+> do repositório, ao lado do `index.html`. **Não crie uma pasta `public/`.**
+> Com o preset "Other", a Vercel passaria a publicar só o conteúdo dela e o
+> site inteiro daria erro 404.
 
 ---
 
-## Sistema visual
+## Como mexer no conteúdo
 
-Tokens em `@layer tokens` no topo do `style.css`.
+Tudo está em `index.html`, em português, sem nenhum sistema de template.
+
+| O que mudar | Onde |
+|---|---|
+| Textos de qualquer seção | direto no `index.html` |
+| Acrescentar um case | copie o bloco `<article class="case">` inteiro e troque os textos (há um comentário marcando o ponto) |
+| Perguntas frequentes | cada `<details class="q">` é uma pergunta |
+| WhatsApp, e-mail, Instagram | procure por `5588993020040` — o número aparece nos botões, no rodapé e nos dados estruturados |
+
+### Um número de WhatsApp só
+
+O site inteiro usa **(88) 99302-0040**, sempre com o mesmo link:
+
+```
+https://wa.me/5588993020040?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20N%C3%BAcleo%20Tech
+```
+
+Se um dia o número mudar, troque em todas as ocorrências de uma vez. Dois
+números diferentes no mesmo site já causaram confusão aqui antes.
+
+### Regra dos textos
+
+Quem lê é dono ou gerente de empresa, não programador. **Se um dono de loja de
+50 anos não entender na primeira leitura, reescreva.** Nada de "deploy",
+"stack", "framework", "API", "performance", "escalável", "soluções digitais".
+Fale do resultado para o cliente, não da técnica.
+
+### O que está faltando preencher
+
+- **Foto do Leonardo** na seção "Quem faz". Enquanto não houver, o bloco mostra
+  o símbolo da marca. O comentário no `index.html` explica como trocar.
+
+Nada neste site é inventado: não há cliente, número, prazo ou depoimento que
+não tenha sido confirmado. Se um dado não pôde ser verificado, ele não está aqui.
+
+---
+
+## Marca
+
+Cores e fontes vêm do kit da marca (`brand-tokens.css`), copiados para o topo
+do `style.css` como variáveis `--nt-*`.
 
 | Token | Valor | Uso |
 |---|---|---|
-| `--ink` | `#08090B` | Fundo |
-| `--paper` | `#EDEEEA` | Texto principal |
-| `--fg-2` | `#9AA0A6` | Texto secundário (7,5:1) |
-| `--fg-3` | `#757A80` | Rótulos mono de 11px (4,7:1) |
-| `--signal` | `#00E5C7` | Cor de assinatura — um destaque por tela |
+| `--nt-ink` | `#0b1012` | fundo principal |
+| `--nt-surface` | `#141b1e` | cartões |
+| `--nt-line` | `#1e2629` | bordas |
+| `--nt-ice` | `#f3f6f6` | texto (17,6:1) |
+| `--nt-teal` | `#2dd4bf` | destaques e botão principal (10,3:1) |
+| `--nt-gray-300` | `#a9b6b9` | texto de apoio (9,2:1) |
+| `--nt-gray-500` | `#7c8b8f` | legendas (5,4:1) |
 
-Tipografia: **Archivo** (display), **Inter** (texto), **IBM Plex Mono**
-(rótulos técnicos).
+**Logo:** no cabeçalho, a horizontal para fundo escuro, com no mínimo 140px de
+largura (regra do manual). Não estique, não gire, não troque as cores, sem
+sombra. Onde não couberem 140px, use só o símbolo (`brand/simbolo-escuro.svg`).
 
-Movimento: uma curva de entrada (`--ease-out`) e uma de estado (`--ease-io`),
-quatro durações. `prefers-reduced-motion: reduce` desliga a abertura, o canvas,
-o cursor e todas as revelações — o conteúdo aparece pronto.
-
----
-
-## Como editar o conteúdo
-
-Tudo está em `index.html`, em português, sem template engine.
-
-- **Capacidades** — `<article class="cap">` na seção `#services`.
-- **Stack** — `<li class="prow">` na seção `#technologies`.
-- **Processo** — `<li class="step">` na seção `#process`.
-- **Contato** — número e e-mail em `js/modules/contact.js` e `js/modules/command.js`.
-
-### Portfólio
-
-A seção `#case` hoje apresenta o próprio site como Case 001, com números medidos
-em tempo real. Quando houver projetos de clientes para publicar, eles entram como
-uma nova seção antes dela — a estrutura de capítulos já comporta.
-
-Nada neste site é fictício: não há clientes, números, depoimentos ou tecnologias
-inventados. Se um dado não pôde ser verificado, ele não está aqui.
+**Fontes servidas pelo próprio site.** Nenhuma requisição ao Google Fonts nem a
+qualquer outro domínio: menos conexões, nada bloqueando a primeira pintura e o
+texto aparecendo antes no 4G fraco. Se um dia alguém trocar por um `<link>` do
+Google, o site fica mais lento — foi medido.
 
 ---
 
-## Formulário de contato
+## Regras que sustentam a velocidade
 
-Não há backend, e o formulário **não finge enviar nada**. Ele valida, monta a
-mensagem e abre o canal real escolhido — WhatsApp (primário) ou e-mail.
+- **Celular primeiro.** Testado em 360px de largura. Nenhuma rolagem lateral.
+- **Texto de 16px para cima** e todo botão ou link com pelo menos 44px de área
+  de toque.
+- **Só animações de `transform` e `opacity`**, que não obrigam o navegador a
+  recalcular a página. `prefers-reduced-motion: reduce` desliga tudo.
+- **Imagens em WebP**, sempre com `width` e `height` escritos, e `loading="lazy"`
+  em tudo que estiver fora da primeira tela. É isso que mantém o deslocamento
+  de layout em zero.
+- **Quase nenhum JavaScript.** O único script do site cabe no fim do
+  `index.html` e faz uma coisa: revelar os blocos conforme entram na tela.
+  As perguntas frequentes são `<details>` nativos e não precisam de código.
+  Sem JavaScript, o site continua inteiro e legível.
 
-Para plugar um backend, preencha `ENDPOINT` em `js/modules/contact.js` e trate a
-resposta no ponto de extensão já marcado; o resto do fluxo continua igual.
+### Medição (Lighthouse, celular)
+
+| | |
+|---|---|
+| Desempenho | 99 |
+| Acessibilidade | 100 |
+| Boas práticas | 100 |
+| SEO | 100 |
+| Peso total da página | 159 KB (fontes incluídas) |
+| Deslocamento de layout | 0 |
 
 ---
 
 ## Publicação na Vercel
 
-Site estático puro: **não há build**, nem `package.json`, nem dependências para
-instalar. A Vercel detecta `index.html` na raiz e serve os arquivos como estão.
+Site estático puro: **não há build**.
 
 - Framework Preset: **Other**
-- Build Command: *(vazio)*
-- Output Directory: *(vazio — a raiz do repositório)*
-- Install Command: *(vazio)*
+- Build Command, Output Directory, Install Command: todos **vazios**
 
-Compressão gzip/brotli é automática na Vercel; o CSS e o JS caem para menos de um
-terço do tamanho transferido.
+O endereço é `https://agencianucleotech.vercel.app`. Ele aparece escrito no
+`index.html` em `canonical`, `og:url` e `og:image` — o Open Graph exige
+endereço completo, senão a prévia do link no WhatsApp não carrega a imagem.
+Se o domínio mudar, troque nesses três lugares.
 
-### Depois do domínio
+### Antes de divulgar
 
-O projeto **não assume nenhum domínio**. Tudo é relativo à raiz, então funciona
-igual no domínio da Vercel ou em um domínio próprio. Quando houver um domínio
-definitivo, três coisas passam a ser possíveis (nenhuma delas é obrigatória para
-o site funcionar):
+Cole o endereço numa conversa do WhatsApp e confira se a prévia aparece com a
+imagem. Confira também se estes endereços abrem:
 
-1. **`og:url`** — acrescentar em `index.html`, com a URL absoluta da home.
-2. **`og:image` e `twitter:image`** — hoje são `/assets/og-image.png`. A
-   especificação do Open Graph pede URL absoluta; trocar para o endereço completo
-   melhora a prévia em alguns validadores.
-3. **`sitemap.xml`** — não existe no repositório porque `<loc>` exige URL
-   absoluta e seria um endereço inventado. Criar na raiz e apontar a diretiva
-   `Sitemap:` do `robots.txt` para ele.
-
-O `<link rel="canonical" href="/">` é relativo e continua correto em qualquer
-cenário — não precisa mudar.
+- `/favicon.ico`
+- `/og-image.png`
+- `/site.webmanifest`
+- `/brand/logo-horizontal-escuro.svg`
 
 ---
 
