@@ -623,6 +623,13 @@ a { color: inherit; }
   max-width: 62ch;
 }
 
+/* botão dentro de uma resposta (ex.: "Quanto custa?") */
+.q__corpo .btn { margin-top: 6px; }
+
+@media (max-width: 479px) {
+  .q__corpo .btn { width: 100%; }
+}
+
 /* ---------- CHAMADA FINAL ---------- */
 
 .final {
