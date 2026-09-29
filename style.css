@@ -231,7 +231,7 @@ a { color: inherit; }
 .topo__nav { display: none; }
 
 /* No celular o cabeçalho fica só com a logo. O botão do WhatsApp aparece
-   logo abaixo, na primeira tela, e no botão fixo do canto — um terceiro
+   logo abaixo, na primeira tela, e no botão fixo do canto. Um terceiro
    botão espremido aqui em cima só deixaria o topo bagunçado. */
 .topo__btn { display: none; }
 
